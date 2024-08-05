@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trips",
+  "info": {
+    "singularName": "trip",
+    "pluralName": "trips",
+    "displayName": "trip",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "arrival": {
+      "type": "date",
+      "required": true
+    },
+    "depart": {
+      "type": "date",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "user_profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-profile.user-profile",
+      "inversedBy": "trips"
+    },
+    "latitude": {
+      "required": false,
+      "type": "float"
+    },
+    "longitude": {
+      "type": "float"
+    },
+    "trip_steps": {
+      "type": "component",
+      "repeatable": true,
+      "component": "steps.steps"
+    }
+  }
+}
